@@ -27,7 +27,7 @@ export default function (props) {
         <div className="month-rack">
           {
             months.map(item => (
-              <div key={item.name}>
+              <div key={item.name} style={{ backgroundColor: item.color }}>
                 <div>{item.name}</div>
               </div>
             ))
