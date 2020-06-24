@@ -1,0 +1,179 @@
+
+body {
+  background-color: white;
+}
+
+.body-no-overflow {
+  overflow-y: hidden;
+}
+
+.header {
+  background-color: #8AB9E4;
+  position: relative;
+}
+
+.header > div:first-child {
+  display:flex;
+  justify-content: flex-end;
+  padding:20px;
+}
+
+.header a {
+  cursor: pointer;
+  padding:10px;
+}
+
+.header a > * {
+  font-size: 24px;
+}
+
+.header > div:last-child {
+  padding-top: 30px;
+  padding-bottom: 50px;
+  padding-left:35px;
+  padding-right: 35px;
+}
+
+.header .year {
+  font-size: 18px;
+}
+
+.header .month {
+  font-weight: 600;
+  font-size: 36px;
+}
+
+.results {
+  position: relative;
+  top:-15px;
+  background-color: transparent;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.results > div {
+  background-color: white;
+  border-radius: 15px;
+  min-height: 50vh;
+  box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.25);
+  padding:55px 15px;
+}
+
+.footer {
+  padding:20px;
+  display: flex;
+}
+
+.footer > div {
+  margin-right: 20px;
+}
+
+.footer a {
+  color:black;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.item {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #EAEAEA;
+  background-color: transparent;
+  padding:15px;
+  margin-bottom: 15px;
+}
+
+.item .title {
+  font-weight: 600;
+  font-size: 21px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.item .date {
+  font-size: 14px;
+}
+
+.item .minister {
+  font-size: 14px;
+  opacity: 0.5;
+}
+
+.item .bottom-section {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  align-items: flex-end;
+}
+
+.item .size {
+  font-size: 14px;
+}
+
+.item .download {
+  font-size: 18px;
+  font-weight: 600;
+  color: #007bff;
+}
+
+.empty {
+  text-align: center;
+  padding:30px 20px;
+}
+
+.empty > div > *:first-child {
+  font-size: 32px;
+}
+
+.loading {
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 75px;
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+.loading > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loading > div > *:first-child {
+  font-size: 32px;
+  color: #007bff;
+  margin-bottom: 15px;
+}
+
+.search {
+  position: fixed;
+  box-sizing: border-box;
+  z-index: 11;
+  background-color: white;
+  width:75%;
+  max-width: 320px;
+  height: 100%;
+  top:0;
+  box-shadow: -1px 0 10px rgba(0, 0, 0, 0.25);
+  right:-320px;
+  padding:25px;
+  transition: all 500ms ease-in-out;
+}
+
+.search.open {
+  right: 0;
+}
+
+.search > div:first-child {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.search .instruction {
+  font-size: 24px;
+  margin-bottom: 25px;
+}
