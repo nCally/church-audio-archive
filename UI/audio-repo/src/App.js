@@ -7,6 +7,9 @@ import Loader from './Loader';
 function App() {
 
   const [loading, setLoading] = useState(false);
+  const [records, setRecords] = useState([]);
+
+  function getArchive(){}
 
   return (
     <div>
@@ -14,11 +17,16 @@ function App() {
 
       <Header />
 
-      <div className="results">
-        <div>
-          <Empty />
-          <Item />
-          <Item />
+      <div className="results-wrapper">
+        <div className="results">
+          <div>
+            {
+              records.length > 0 ?
+              (
+                records.map(item => <Item />)
+              ) : (<Empty />)
+            }
+          </div>
         </div>
       </div>
 

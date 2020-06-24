@@ -14,12 +14,14 @@ export default function (props) {
       <div>
         <div>Year</div>
         <div>
-          <select>
+          <select className="select-style">
             <option>2019</option>
             <option>2020</option>
           </select>
         </div>
       </div>
+
+      <br/>
 
       <div>
         <div>Month</div>
