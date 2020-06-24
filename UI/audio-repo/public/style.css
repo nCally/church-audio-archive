@@ -161,6 +161,8 @@ body {
   right:-320px;
   padding:25px;
   transition: all 500ms ease-in-out;
+  overflow-y: auto;
+  padding-bottom: 75px;
 }
 
 .search.open {
@@ -176,4 +178,25 @@ body {
 .search .instruction {
   font-size: 24px;
   margin-bottom: 25px;
+}
+
+.month-rack {
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 20px;
+  row-gap: 20px;
+}
+
+.month-rack > div{
+  background-color: #8AB9E4;
+  height: 50px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding:7px;
+  box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.25);
+}
+
+.month-rack > div:hover {
+  cursor: pointer;
 }

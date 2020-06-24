@@ -25,7 +25,13 @@ export default function (props) {
         <div>Month</div>
 
         <div className="month-rack">
-
+          {
+            months.map(item => (
+              <div key={item.name}>
+                <div>{item.name}</div>
+              </div>
+            ))
+          }
         </div>
       </div>
     </div>
@@ -33,5 +39,16 @@ export default function (props) {
 }
 
 const months = [
-  { name: "January" }
+  { name: "Jan", color: "#ffd59a" },
+  { name: "Feb", color: "#bb97c6" },
+  { name: "Mar", color: "#bce5df" },
+  { name: "Apr", color: "#DA4A52" },
+  { name: "May", color: "#7bb661" },
+  { name: "Jun", color: "#FFD858" },
+  { name: "Jul", color: "#df9e8e" },
+  { name: "Aug", color: "#FDB813" },
+  { name: "Sep", color: "#5265B0" },
+  { name: "Oct", color: "#2a52be" },
+  { name: "Nov", color: "#7f1734" },
+  { name: "Dec", color: "#128191" },
 ]
