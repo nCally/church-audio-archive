@@ -23,7 +23,15 @@ export default function (props) {
 
       <div>
         <div>Month</div>
+
+        <div className="month-rack">
+
+        </div>
       </div>
     </div>
   )
 }
+
+const months = [
+  { name: "January" }
+]
