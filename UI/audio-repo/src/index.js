@@ -1,8 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import Main from './App';
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route path="/:month/:year" exact component={Main} />
+        <Route path="*" component={Main} />
+      </Switch>
+    </BrowserRouter>
+  )
+}
 
 ReactDOM.render(
   <React.StrictMode>

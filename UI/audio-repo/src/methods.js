@@ -3,7 +3,7 @@ import axios from "axios";
 
 const api = axios.create({ baseURL: "http://localhost:8010" })
 
-export const retrieveArchive = async (month, year, loading) => {
+export const retrieveArchive = async (month, year, loading, setResult) => {
 
   loading(true);
 
@@ -17,7 +17,7 @@ export const retrieveArchive = async (month, year, loading) => {
     })
 
     if (res.status === 200) {
-      console.log(res.data)
+      setResult(res.data.data);
       loading(false);
     } else {
       loading(false);
