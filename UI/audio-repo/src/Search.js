@@ -1,7 +1,8 @@
 import React from 'react';
+import { withRouter } from "react-router-dom";
 import { CloseOutlined } from '@ant-design/icons';
 
-export default function (props) {
+export default withRouter(function (props) {
   return (
     <div className={`search ${props.open}`}>
       <div>
@@ -21,15 +22,15 @@ export default function (props) {
         </div>
       </div>
 
-      <br/>
+      <br />
 
       <div>
         <div>Month</div>
 
         <div className="month-rack">
           {
-            months.map(item => (
-              <div key={item.name} style={{ backgroundColor: item.color }}>
+            months.map((item, i) => (
+              <div key={item.name} style={{ backgroundColor: item.color }} onClick={() => props.history.push(`/${i + 1}/${2020}`)}>
                 <div>{item.name}</div>
               </div>
             ))
@@ -38,7 +39,7 @@ export default function (props) {
       </div>
     </div>
   )
-}
+})
 
 const months = [
   { name: "Jan", color: "#ffd59a" },

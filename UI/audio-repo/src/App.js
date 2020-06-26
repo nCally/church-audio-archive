@@ -26,6 +26,14 @@ function App(props) {
     }
   }, [])
 
+  useEffect(() => {
+    if (!params.month || !params.year) {
+      props.history.push(`/${moment().format('M')}/${moment().format("YYYY")}`)
+    } else {
+      retrieveArchive(params.month, params.year, setLoading, setRecords);
+    }
+  }, [params])
+
   return (
     <div>
       <Loader loading={loading} />
