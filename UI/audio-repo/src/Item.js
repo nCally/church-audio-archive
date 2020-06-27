@@ -3,7 +3,7 @@ import moment from 'moment';
 
 export default function (props) {
 
-  let { title, minister, size, day, month, year, link } = props.item;
+  let { title, minister, size, day, month, year, link, file_id } = props.item;
 
   return (
     <div className="item">
@@ -13,7 +13,7 @@ export default function (props) {
       <div className="bottom-section">
         <div className="size">{size}</div>
         <div className="download">
-          <a>Download</a>
+          <a href={`https://drive.google.com/uc?export=download&id=${file_id}`} download>Download</a>
         </div>
       </div>
     </div>
