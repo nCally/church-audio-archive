@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment';
+import { CloudDownloadOutlined } from '@ant-design/icons';
 
 export default function (props) {
 
@@ -13,7 +14,9 @@ export default function (props) {
       <div className="bottom-section">
         <div className="size">{size}MB</div>
         <div className="download">
-          <a href={`https://drive.google.com/uc?export=download&id=${file_id}`} download>Download</a>
+          <a href={`https://drive.google.com/uc?export=download&id=${file_id}`} download>
+            <CloudDownloadOutlined style={{ fontSize: 21 }} />
+          </a>
         </div>
       </div>
     </div>

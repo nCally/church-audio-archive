@@ -1,7 +1,7 @@
 
 import axios from "axios";
 
-const api = axios.create({ baseURL: "http://localhost:8010" })
+const api = axios.create({ baseURL: "http://localhost:6004" })
 
 export const retrieveArchive = async (month, year, loading, setResult) => {
 
@@ -28,5 +28,26 @@ export const retrieveArchive = async (month, year, loading, setResult) => {
   } catch (e) {
     loading(false);
     throw e;
+  }
+}
+
+
+export const addArchive = async (data, load, success) => {
+  load(true);
+  try {
+
+    const res = await api.post("/add-to-archive", data)
+    if (res.status === 200) {
+
+      success();
+
+    } else {
+      load(false);
+      alert("Upload failed. Try it again")
+    }
+
+  } catch (error) {
+    load(false);
+    throw error;
   }
 }

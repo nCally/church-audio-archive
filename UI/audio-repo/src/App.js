@@ -10,13 +10,9 @@ import moment from "moment";
 function App(props) {
 
   const params = props.match.params;
-  console.log(params)
-
 
   const [loading, setLoading] = useState(false);
   const [records, setRecords] = useState([]);
-
-  function getArchive() { }
 
   useEffect(() => {
     if (!params.month || !params.year) {
@@ -24,6 +20,8 @@ function App(props) {
     } else {
       retrieveArchive(params.month, params.year, setLoading, setRecords);
     }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
@@ -32,6 +30,8 @@ function App(props) {
     } else {
       retrieveArchive(params.month, params.year, setLoading, setRecords);
     }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params])
 
   return (
