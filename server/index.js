@@ -2,8 +2,11 @@
 const express = require("express");
 const body_parser = require("body-parser");
 const cors = require("cors");
-const db = require("./db");
+const mongoose = require('mongoose');
 const { get_archive, add_archive } = require("./controllers");
+
+require('dotenv').config();
+mongoose.set('useCreateIndex', true);
 
 const server = express();
 
@@ -18,12 +21,23 @@ server.post("/add-to-archive", add_archive);
 
 const PORT = process.env.PORT || "8010";
 
-db.sync()
-    .then(() => {
-        server.listen(PORT, () => {
-            console.log(`app running on ${PORT}`);
-        })
+server.listen(PORT, (e) => {
+
+  if (e) { console.log(e) }
+
+  mongoose.connect(
+    process.env.MONGO,
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useFindAndModify: false
+    },
+    function (err) {
+      if (err) { console.log(err) }
+      else {
+        console.log(`app running on ${PORT}`);
+      }
     })
-    .catch(error => {
-        throw error;
-    })
+
+
+})

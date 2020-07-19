@@ -4,6 +4,7 @@
 /UI/audio-repo/node_modules
 /server/node_modules
 /server/db/store.db
+/server/.env
 /.pnp
 .pnp.js
 
