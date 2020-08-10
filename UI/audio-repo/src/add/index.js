@@ -3,11 +3,13 @@ import { withRouter } from "react-router-dom";
 import Loader from "../Loader";
 import moment from "moment";
 import { addArchive } from "../methods";
+import Datepicker from 'react-datepicker';
 
 export default withRouter(function (props) {
 
   const [load, setLoad] = useState(false);
   const [state, setState] = useState({})
+  const [date, setdate] = useState(new Date());
 
   function onchange(e) {
     let { name, value } = e.target;
@@ -21,9 +23,9 @@ export default withRouter(function (props) {
     e.preventDefault();
     let data = {
       ...state,
-      day: moment(state.date).format("D"),
-      month: moment(state.date).format("M"),
-      year: moment(state.date).format("YYYY")
+      day: moment(date).format("D"),
+      month: moment(date).format("M"),
+      year: moment(date).format("YYYY")
     }
 
     addArchive(data, setLoad, () => props.history.push("/add-to-archive/success"))
@@ -85,10 +87,11 @@ export default withRouter(function (props) {
             <div className="entry">
               <div>Date of message</div>
               <div>
-                <input
+                <Datepicker
                   required
-                  autoComplete="off"
-                  id="datepicker" name="date" onChange={onchange} />
+                  selected={date}
+                  dateFormat="dd MMM yyyy"
+                  onChange={date => setdate(date)} />
               </div>
             </div>
 
@@ -97,14 +100,14 @@ export default withRouter(function (props) {
               <div>
                 <input
                   required
-                  placeholder="Eg: 10"
+                  placeholder="Eg: 10.83"
                   autoComplete="off"
                   name="size" onChange={onchange} />
               </div>
             </div>
 
             <div>
-              <button type="submit">Submit</button>
+              <button type="submit" className="upload">Submit</button>
             </div>
 
           </form>

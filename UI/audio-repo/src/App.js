@@ -7,30 +7,39 @@ import Loader from './Loader';
 import { retrieveArchive } from "./methods";
 import moment from "moment";
 
-function App(props) {
 
+function App(props) {
   const params = props.match.params;
 
+  const [year, setyear] = useState(moment().format("YYYY"));
   const [loading, setLoading] = useState(false);
   const [records, setRecords] = useState([]);
 
-  useEffect(() => {
+  /* useEffect(() => {
     if (!params.month || !params.year) {
-      props.history.push(`/${moment().format('M')}/${moment().format("YYYY")}`)
+      props.history.push(`/${moment().format('M')}/${year}`)
     } else {
-      retrieveArchive(params.month, params.year, setLoading, setRecords);
+      retrieveArchive(
+        params.month,
+        params.year,
+        setLoading,
+        setRecords
+      );
     }
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, []) */
 
   useEffect(() => {
     if (!params.month || !params.year) {
-      props.history.push(`/${moment().format('M')}/${moment().format("YYYY")}`)
+      props.history.push(`/${moment().format('M')}/${year}`)
     } else {
-      retrieveArchive(params.month, params.year, setLoading, setRecords);
+      retrieveArchive(
+        params.month,
+        params.year,
+        setLoading,
+        setRecords
+      );
     }
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params])
 
@@ -38,7 +47,9 @@ function App(props) {
     <div>
       <Loader loading={loading} />
 
-      <Header />
+      <Header
+        year={year}
+        setyear={setyear} />
 
       <div className="results-wrapper">
         <div className="results">

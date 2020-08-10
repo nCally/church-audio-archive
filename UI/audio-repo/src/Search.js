@@ -15,9 +15,15 @@ export default withRouter(function (props) {
       <div>
         <div>Year</div>
         <div>
-          <select className="select-style">
-            <option>2019</option>
-            <option>2020</option>
+          <select
+            className="select-style"
+            onChange={(e) => props.setyear(e.target.value)}>
+            <option
+              value="2019"
+              selected={props.year === '2019' ? true : false}>2019</option>
+            <option
+              value="2020"
+              selected={props.year === '2020' ? true : false}>2020</option>
           </select>
         </div>
       </div>
@@ -30,7 +36,7 @@ export default withRouter(function (props) {
         <div className="month-rack">
           {
             months.map((item, i) => (
-              <div key={item.name} style={{ backgroundColor: item.color }} onClick={() => props.history.push(`/${i + 1}/${2020}`)}>
+              <div key={item.name} style={{ backgroundColor: item.color }} onClick={() => props.history.push(`/${i + 1}/${props.year}`)}>
                 <div>{item.name}</div>
               </div>
             ))

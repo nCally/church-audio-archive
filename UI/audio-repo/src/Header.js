@@ -1,26 +1,39 @@
 import React, { useState } from 'react';
+import { withRouter, Link } from 'react-router-dom';
 import { MenuOutlined } from '@ant-design/icons';
 import Search from "./Search";
+import moment from 'moment';
 
-export default function () {
-
+function Header(props) {
   const [open, setOpen] = useState(false);
+
+  let params = props.match.params;
 
   return (
     <div className="header">
       <div>
-        <a onClick={() => setOpen(true)}>
-          <MenuOutlined />
-        </a>
+        <div>M</div>
+        <Link to="/how-to-use" className="text-decoration-none">How to Use</Link>
+        <div>
+          <a onClick={() => setOpen(true)}>
+            <MenuOutlined />
+          </a>
 
-        <Search open={open ? "open" : ""} close={() => setOpen(false)} />
+          <Search
+            year={props.year}
+            setyear={props.setyear}
+            open={open ? "open" : ""}
+            close={() => setOpen(false)} />
 
+        </div>
       </div>
 
       <div>
-        <div className="year">2020</div>
-        <div className="month">February</div>
+        <div className="year">{params.year}</div>
+        <div className="month">{params.month && moment(params.month, 'MM').format("MMMM")}</div>
       </div>
     </div>
   )
 }
+
+export default withRouter(Header);

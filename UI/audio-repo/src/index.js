@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import './index.css';
 import Main from './App';
 import AddingArchive from "./add";
 import Success from './add/Success';
+import "react-datepicker/dist/react-datepicker.css";
+import './index.css';
 
 function App() {
   return (
