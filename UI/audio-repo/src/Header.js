@@ -12,8 +12,8 @@ function Header(props) {
   return (
     <div className="header">
       <div>
-        <div>M</div>
-        <Link to="/how-to-use" className="text-decoration-none">How to Use</Link>
+        <div></div>
+        <Link to="/how-to-use" className="text-decoration-none">{/* How to Use */}</Link>
         <div>
           <a onClick={() => setOpen(true)}>
             <MenuOutlined />

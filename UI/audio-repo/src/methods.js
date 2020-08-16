@@ -1,7 +1,8 @@
 
 import axios from "axios";
 
-const api = axios.create({ baseURL: "http://localhost:6004" })
+const api = axios.create({ baseURL: "http://church-api.mrcally.com" })
+//const api = axios.create({ baseURL: "http://localhost:6004" })
 
 export const retrieveArchive = async (month, year, loading, setResult) => {
 
