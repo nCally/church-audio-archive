@@ -1,19 +1,43 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { withRouter } from "react-router-dom";
 import { CloseOutlined } from '@ant-design/icons';
 
 export default withRouter(function (props) {
+
+  const search = useRef(null);
+
+  function closeDrawer(e) {
+    if (search.current && !search.current.contains(e.target)) {
+      props.close();
+    }
+  }
+
+  useEffect(() => {
+    if (props.open === 'open') {
+      document.body.classList.add("body-no-overflow");
+    } else {
+      document.body.classList.remove("body-no-overflow");
+    }
+  }, [props.open])
+
+  useEffect(() => {
+    document.addEventListener("mousedown", closeDrawer);
+    return () => {
+      document.removeEventListener("mousedown", closeDrawer);
+    }
+  })
+
   return (
-    <div className={`search ${props.open}`}>
+    <div className={`search ${props.open}`} ref={search}>
       <div>
-        <a onClick={() => props.close()}>
+        <span onClick={() => props.close()} className="cursor-pointer">
           <CloseOutlined />
-        </a>
+        </span>
       </div>
       <div className="instruction">Choose the year and month of the message you want</div>
 
       <div>
-        <div>Year</div>
+        <div className="text-left">Choose Year</div>
         <div>
           <select
             className="select-style"
@@ -29,14 +53,21 @@ export default withRouter(function (props) {
       </div>
 
       <br />
+      <br />
 
-      <div>
-        <div>Month</div>
+      <div className="pb50">
+        <div className="text-left">Select Month</div>
 
         <div className="month-rack">
           {
             months.map((item, i) => (
-              <div key={item.name} style={{ backgroundColor: item.color }} onClick={() => props.history.push(`/${i + 1}/${props.year}`)}>
+              <div
+                className={props.match.params.month === String(i + 1) && 'active'}
+                key={item.name}
+                onClick={() => {
+                  props.history.push(`/${i + 1}/${props.year}`);
+                  props.close();
+                }}>
                 <div>{item.name}</div>
               </div>
             ))

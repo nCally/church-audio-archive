@@ -15,9 +15,9 @@ function Header(props) {
         <div></div>
         <Link to="/how-to-use" className="text-decoration-none">{/* How to Use */}</Link>
         <div>
-          <a onClick={() => setOpen(true)}>
+          <span onClick={() => setOpen(true)} className="cursor-pointer">
             <MenuOutlined />
-          </a>
+          </span>
 
           <Search
             year={props.year}

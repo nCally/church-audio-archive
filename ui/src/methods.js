@@ -1,8 +1,13 @@
 
 import axios from "axios";
 
-const api = axios.create({ baseURL: "http://church-api.mrcally.com" })
-//const api = axios.create({ baseURL: "http://localhost:6004" })
+let host = window.location.hostname;
+
+const api = axios.create({
+  baseURL: (host === 'localhost') ?
+    "http://localhost:6004" :
+    "http://church-api.mrcally.com"
+});
 
 export const retrieveArchive = async (month, year, loading, setResult) => {
 
@@ -17,14 +22,8 @@ export const retrieveArchive = async (month, year, loading, setResult) => {
       }
     })
 
-    if (res.status === 200) {
-      setResult(res.data.data);
-      loading(false);
-    } else {
-      loading(false);
-    }
-
-
+    setResult(res.data.data);
+    loading(false);
 
   } catch (e) {
     loading(false);
@@ -37,15 +36,9 @@ export const addArchive = async (data, load, success) => {
   load(true);
   try {
 
-    const res = await api.post("/add-to-archive", data)
-    if (res.status === 200) {
+    await api.post("/add-to-archive", data)
 
-      success();
-
-    } else {
-      load(false);
-      alert("Upload failed. Try it again")
-    }
+    success();
 
   } catch (error) {
     load(false);

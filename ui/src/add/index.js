@@ -64,7 +64,7 @@ export default withRouter(function (props) {
               </div>
             </div>
 
-            <div className="entry">
+            {/* <div className="entry">
               <div>File ID</div>
               <div>
                 <input
@@ -72,10 +72,10 @@ export default withRouter(function (props) {
                   autoComplete="off"
                   name="fileId" onChange={onchange} />
               </div>
-            </div>
+            </div> */}
 
             <div className="entry">
-              <div>Google Drive Link</div>
+              <div>Link</div>
               <div>
                 <input
                   required

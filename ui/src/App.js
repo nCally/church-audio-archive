@@ -66,7 +66,7 @@ function App(props) {
 
       <div className="footer">
         <div>
-          <a href="/">Terms of use</a>
+          <a href="/">How to use</a>
         </div>
         <div>
           <a href="/">About</a>

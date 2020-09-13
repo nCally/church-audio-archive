@@ -24,7 +24,7 @@ body {
   padding:10px;
 }
 
-.header a > * {
+.header a > *, .header span > * {
   font-size: 24px;
 }
 
@@ -206,6 +206,7 @@ a.download {
   right: 0;
 }
 
+
 .search > div:first-child {
   display: flex;
   justify-content: flex-end;
@@ -226,7 +227,7 @@ a.download {
 }
 
 .month-rack > div{
-  color:white;
+  color:#333;
   height: 50px;
   display: flex;
   font-weight: bold;
@@ -234,7 +235,14 @@ a.download {
   justify-content: flex-end;
   align-items: flex-end;
   padding:7px;
-  box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.25);
+  border:1px solid #333;
+  box-shadow:0 1px 5px rgba(0, 0, 0, 0.15)
+}
+
+.month-rack > div.active {
+  background-color: #007bff;
+  color:white;
+  border:none;
 }
 
 .month-rack > div:hover {
@@ -258,6 +266,7 @@ a.download {
 
 .upload-main {
   padding: 100px 25px;
+  border: 1px solid #ccc;
 }
 
 @media (min-width:768px){
@@ -314,3 +323,7 @@ a.download {
 .text-decoration-none { text-decoration: none;}
 .white { color: white;}
 .text-center { text-align: center;}
+.text-left { text-align: left; }
+.pb50 { padding-bottom: 50px; }
+.pt50 { padding-top: 50px; }
+.cursor-pointer { cursor: pointer; }
