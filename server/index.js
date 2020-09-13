@@ -13,8 +13,13 @@ const server = express();
 server.use(body_parser.urlencoded({ extended: false }));
 server.use(body_parser.json());
 
+var whiteList = ['http://church.mrcally.com', 'http://localhost:3000']
 const origin = {
-  origin: 'http://church.mrcally.com',
+  origin: (origin, callback) => {
+    if (whiteList.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else { callback(new Error('Not allowed by CORS')) }
+  },
   optionsSuccessStatus: 200
 }
 server.use(cors(origin));

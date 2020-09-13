@@ -6,7 +6,7 @@ const get_archive = async function (req, res) {
   const year = Number(req.query.year);
   try {
 
-    const result = await model.find().where('month', month).where('year', year)
+    const result = await model.find().where('month', month).where('year', year).sort({ day: 1 })
 
     /* const result = await model.findAll({ where: { month, year } }) */
 
@@ -15,7 +15,7 @@ const get_archive = async function (req, res) {
       msg: "archives"
     })
   } catch (error) {
-    console.log(error)
+    //console.log(error)
     res.status(500).json({ msg: "failed to get records" })
   }
 }
