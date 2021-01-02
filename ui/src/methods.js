@@ -5,7 +5,7 @@ let host = window.location.hostname;
 
 const api = axios.create({
   baseURL: (host === 'localhost') ?
-    "http://localhost:6004" :
+    "http://localhost:6410" :
     "http://church-api.mrcally.com"
 });
 

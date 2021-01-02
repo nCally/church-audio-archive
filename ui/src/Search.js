@@ -6,6 +6,20 @@ export default withRouter(function (props) {
 
   const search = useRef(null);
 
+  function yearsList(){
+    let startYear = 2018;
+    let currentYear = Number(props.year);
+
+    let yearsListToUse = [];
+    for(let year = startYear; year < currentYear; year++){
+      yearsListToUse.push(year + 1);
+    }
+
+    return yearsListToUse;
+
+    // eslint-disable-next-line
+  }
+
   function closeDrawer(e) {
     if (search.current && !search.current.contains(e.target)) {
       props.close();
@@ -42,12 +56,12 @@ export default withRouter(function (props) {
           <select
             className="select-style"
             onChange={(e) => props.setyear(e.target.value)}>
-            <option
-              value="2019"
-              selected={props.year === '2019' ? true : false}>2019</option>
-            <option
-              value="2020"
-              selected={props.year === '2020' ? true : false}>2020</option>
+            {
+              yearsList().map((item,i) => <option
+                key={i}
+                value={item.toString()}
+                selected={props.year === item.toString() ? true : false}>{item}</option>)
+            }
           </select>
         </div>
       </div>
@@ -62,7 +76,7 @@ export default withRouter(function (props) {
           {
             months.map((item, i) => (
               <div
-                className={props.match.params.month === String(i + 1) && 'active'}
+                className={props.match.params.month === String(i + 1) ? 'active':''}
                 key={item.name}
                 onClick={() => {
                   props.history.push(`/${i + 1}/${props.year}`);
